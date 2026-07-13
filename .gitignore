@@ -1,0 +1,8 @@
+node_modules/
+.feishu-summary-bot/
+*.pptx
+*.ps1
+create_ppt.*
+build_pptx.*
+gen_ppt.*
+tasks/

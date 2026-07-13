@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Products - BuyeReports</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">B</span>
+        BuyeReports
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="category.html?cat=electronics">Electronics</a>
+        <a href="category.html?cat=appliances">Appliances</a>
+        <a href="category.html?cat=health">Health & Beauty</a>
+        <a href="compare.html" class="active">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search products...">
+        </div>
+        <a href="compare.html" class="nav-compare-btn">
+          ⚖️ Compare <span class="compare-count" style="display:none">0</span>
+        </a>
+        <button class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="category.html?cat=electronics">Electronics</a>
+    <a href="category.html?cat=appliances">Appliances</a>
+    <a href="category.html?cat=health">Health & Beauty</a>
+    <a href="compare.html">Compare</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span>Compare Products</span>
+    </div>
+  </div>
+
+  <!-- Compare Header -->
+  <div class="container">
+    <div class="compare-header">
+      <h1>⚖️ Compare Products</h1>
+      <p>Add up to 4 products and compare them side by side to find the best one for you.</p>
+    </div>
+  </div>
+
+  <!-- Add Product Bar -->
+  <div class="container">
+    <div class="compare-add-bar">
+      <select id="add-product-select">
+        <option value="">-- Add a product to compare --</option>
+      </select>
+      <button class="btn btn-primary" onclick="addProductToCompare()">➕ Add to Comparison</button>
+      <button class="btn btn-outline btn-sm" onclick="clearAllCompare()" id="clear-all-btn" style="display:none;">🗑️ Clear All</button>
+    </div>
+  </div>
+
+  <!-- Compare Table -->
+  <div class="container" id="compare-content">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- CTA -->
+  <div class="container" style="text-align:center;padding-bottom:60px;">
+    <a href="category.html" class="btn btn-outline btn-lg">🔍 Browse More Products</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>BuyeReports</h3>
+          <p>Helping consumers make smarter purchasing decisions with honest, in-depth product reviews and easy-to-use comparison tools.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <a href="category.html?cat=electronics">Electronics</a>
+          <a href="category.html?cat=appliances">Appliances</a>
+          <a href="category.html?cat=health">Health & Beauty</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="about.html#methodology">Our Methodology</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Affiliate Disclosure</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BuyeReports. All rights reserved. As an Amazon Associate we earn from qualifying purchases.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderCompareTable() {
+      const products = getCompareProducts();
+      const container = document.getElementById('compare-content');
+      const clearBtn = document.getElementById('clear-all-btn');
+
+      // Update select dropdown
+      const select = document.getElementById('add-product-select');
+      const existingIds = products.map(p => p.id);
+      const available = PRODUCTS.filter(p => !existingIds.includes(p.id));
+      select.innerHTML = '<option value="">-- Add a product to compare --</option>' +
+        available.map(p => `<option value="${p.id}">${p.name} (${p.categoryName})</option>`).join('');
+
+      if (products.length === 0) {
+        clearBtn.style.display = 'none';
+        container.innerHTML = `
+          <div class="empty-compare">
+            <div class="empty-icon">⚖️</div>
+            <h2>No products to compare yet</h2>
+            <p>Browse our reviews and add products to your comparison list, or select one below.</p>
+            <a href="category.html" class="btn btn-primary btn-lg">Browse Products</a>
+          </div>
+        `;
+        return;
+      }
+
+      clearBtn.style.display = 'inline-flex';
+
+      // Determine best for each spec
+      function getBestForSpec(specKey, products) {
+        // For numeric specs like rating, battery, weight — higher/lower
+        const numericFields = ['Battery Life', 'Battery', 'Runtime', 'Suction', 'CADR', 'Force', 'Noise'];
+        const lowerIsBetter = ['Noise', 'Weight'];
+        const higherIsBetter = ['Battery Life', 'Battery', 'Runtime', 'Suction', 'CADR', 'Force'];
+
+        if (specKey === 'Price' || specKey === 'price') {
+          // Lower price = better
+          return null; // We handle price separately
+        }
+
+        return null; // Simplification: we mark rating-based best
+      }
+
+      // Find the best product by rating
+      const bestId = products.reduce((best, p) => p.rating > best.rating ? p : best, products[0]).id;
+
+      // Collect all spec keys
+      const allSpecKeys = new Set();
+      products.forEach(p => Object.keys(p.specs).forEach(k => allSpecKeys.add(k)));
+
+      // Determine best price (cheapest)
+      const bestPriceId = products.reduce((best, p) => {
+        const price = parseFloat(p.price.replace(/[$,]/g, ''));
+        const bestPrice = parseFloat(best.price.replace(/[$,]/g, ''));
+        return price < bestPrice ? p : best;
+      }, products[0]).id;
+
+      const imgCategory = (p) => p.category;
+
+      container.innerHTML = `
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                ${products.map(p => `
+                  <th>
+                    <button class="remove-compare" onclick="removeFromCompare('${p.id}'); renderCompareTable();">✕</button>
+                    <div class="compare-img ${imgCategory(p)}" style="width:80px;height:80px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:2rem;">${p.image}</div>
+                    <div class="compare-name" style="font-weight:600;margin-bottom:4px;">${p.name}</div>
+                    <div class="compare-price">${p.price}</div>
+                    <div style="margin-top:4px;">${renderStars(p.rating, 'sm')} ${p.rating}</div>
+                    <a href="product.html?id=${p.id}" class="btn btn-sm btn-outline" style="margin-top:8px;">View Details</a>
+                  </th>
+                `).join('')}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rating</td>
+                ${products.map(p => `<td class="${p.id === bestId ? 'best' : ''}">${p.rating} / 5${p.id === bestId ? ' 🏆' : ''}</td>`).join('')}
+              </tr>
+              <tr>
+                <td>Price</td>
+                ${products.map(p => `<td class="${p.id === bestPriceId ? 'best' : ''}">${p.price}${p.id === bestPriceId ? ' 🏆' : ''}</td>`).join('')}
+              </tr>
+              <tr>
+                <td>Review Count</td>
+                ${products.map(p => `<td>${p.reviewCount.toLocaleString()}</td>`).join('')}
+              </tr>
+              <tr>
+                <td>Category</td>
+                ${products.map(p => `<td>${p.categoryName}</td>`).join('')}
+              </tr>
+              <tr>
+                <td>Subcategory</td>
+                ${products.map(p => `<td>${p.subcategory}</td>`).join('')}
+              </tr>
+              ${[...allSpecKeys].map(key => `
+                <tr>
+                  <td>${key}</td>
+                  ${products.map(p => `<td>${p.specs[key] || '—'}</td>`).join('')}
+                </tr>
+              `).join('')}
+              <tr>
+                <td>Pros Count</td>
+                ${products.map(p => `<td>${p.pros.length} pros</td>`).join('')}
+              </tr>
+              <tr>
+                <td>Cons Count</td>
+                ${products.map(p => `<td>${p.cons.length} cons</td>`).join('')}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="background:#F0FDF4;border-radius:var(--radius-lg);padding:20px 28px;margin-top:20px;">
+          <strong>🏆 Our Pick:</strong>
+          ${(() => {
+            const best = products.reduce((prev, curr) => prev.rating > curr.rating ? prev : curr);
+            return `<a href="product.html?id=${best.id}" style="font-weight:700;">${best.name}</a> — Highest rated at ${best.rating}/5 with ${best.reviewCount.toLocaleString()} reviews.`;
+          })()}
+        </div>
+      `;
+    }
+
+    function addProductToCompare() {
+      const select = document.getElementById('add-product-select');
+      const productId = select.value;
+      if (!productId) {
+        showToast('Please select a product first', 'error');
+        return;
+      }
+      addToCompare(productId);
+      renderCompareTable();
+    }
+
+    function clearAllCompare() {
+      if (confirm('Remove all products from comparison?')) {
+        saveCompareList([]);
+        updateCompareCount();
+        renderCompareTable();
+        showToast('Comparison list cleared', 'success');
+      }
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCompareTable();
+    });
+  </script>
+</body>
+</html>

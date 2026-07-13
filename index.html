@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuyeReports - Find the Best Products | Expert Reviews & Comparisons</title>
+  <meta name="description" content="Top products in every category so you can compare what truly matters and choose the best for you. Expert reviews for electronics, home appliances, and health & beauty.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">B</span>
+        BuyeReports
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="category.html?cat=electronics">Electronics</a>
+        <a href="category.html?cat=appliances">Appliances</a>
+        <a href="category.html?cat=health">Health & Beauty</a>
+        <a href="compare.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search products...">
+        </div>
+        <a href="compare.html" class="nav-compare-btn">
+          ⚖️ Compare <span class="compare-count" style="display:none">0</span>
+        </a>
+        <button class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="category.html?cat=electronics">Electronics</a>
+    <a href="category.html?cat=appliances">Appliances</a>
+    <a href="category.html?cat=health">Health & Beauty</a>
+    <a href="compare.html">Compare</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find the Best Products</h1>
+      <p>Expert reviews and side-by-side comparisons to help you make confident buying decisions.</p>
+      <div class="hero-search">
+        <input type="text" placeholder="Search for headphones, laptops, vacuums...">
+        <button>🔍 Search Reviews</button>
+      </div>
+      <div class="hero-categories">
+        <a href="category.html?cat=electronics" class="hero-cat-chip">💻 Electronics</a>
+        <a href="category.html?cat=appliances" class="hero-cat-chip">🏠 Home Appliances</a>
+        <a href="category.html?cat=health" class="hero-cat-chip">💄 Health & Beauty</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="container">
+      <h2 class="section-title">Explore Categories</h2>
+      <p class="section-subtitle">Browse our in-depth reviews across every major product category</p>
+      <div class="cat-grid">
+        <a href="category.html?cat=electronics" class="cat-card">
+          <div class="cat-icon electronics">💻</div>
+          <h3>Consumer Electronics</h3>
+          <p>Headphones, laptops, smartphones, monitors, tablets — we test the latest tech so you don't have to.</p>
+          <span class="btn btn-outline">Browse Electronics →</span>
+        </a>
+        <a href="category.html?cat=appliances" class="cat-card">
+          <div class="cat-icon appliances">🏠</div>
+          <h3>Home Appliances</h3>
+          <p>Vacuum cleaners, coffee machines, air purifiers, dishwashers — find the best tools for your home.</p>
+          <span class="btn btn-outline">Browse Appliances →</span>
+        </a>
+        <a href="category.html?cat=health" class="cat-card">
+          <div class="cat-icon health">💄</div>
+          <h3>Health & Beauty</h3>
+          <p>Hair stylers, skincare devices, electric toothbrushes, massage guns — look and feel your best.</p>
+          <span class="btn btn-outline">Browse Health & Beauty →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editor's Top Picks -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">🏆 Editor's Top Picks</h2>
+      <p class="section-subtitle">Our highest-rated products, rigorously tested and reviewed</p>
+      <div class="scroll-row" id="top-picks-row">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Reviews -->
+  <section class="latest-section">
+    <div class="container">
+      <h2 class="section-title">📝 Latest Reviews</h2>
+      <p class="section-subtitle">Fresh reviews, honest opinions — updated weekly</p>
+      <div class="product-grid" id="latest-reviews-grid">
+        <!-- Filled by JS -->
+      </div>
+      <div class="text-center mt-40">
+        <a href="category.html" class="btn btn-primary btn-lg">View All Reviews →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compare CTA -->
+  <section class="compare-cta">
+    <div class="container">
+      <h2>Compare Products Side by Side</h2>
+      <p>Not sure which one to pick? Add products to your comparison list and see how they stack up.</p>
+      <a href="compare.html" class="btn btn-white btn-lg">⚖️ Start Comparing</a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h3>📬 Stay in the Know</h3>
+          <p>Get our latest reviews and buying guides delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thanks for subscribing! 🎉', 'success'); this.reset();">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>BuyeReports</h3>
+          <p>Helping consumers make smarter purchasing decisions with honest, in-depth product reviews and easy-to-use comparison tools.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <a href="category.html?cat=electronics">Electronics</a>
+          <a href="category.html?cat=appliances">Appliances</a>
+          <a href="category.html?cat=health">Health & Beauty</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="about.html#methodology">Our Methodology</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Affiliate Disclosure</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BuyeReports. All rights reserved. As an Amazon Associate we earn from qualifying purchases.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Populate Top Picks (rating >= 4.6)
+    (function() {
+      const topPicks = PRODUCTS.filter(p => p.rating >= 4.7);
+      const row = document.getElementById('top-picks-row');
+      if (row) row.innerHTML = topPicks.map(renderProductCard).join('');
+
+      // Populate Latest Reviews (random 6)
+      const latest = [...PRODUCTS].sort(() => 0.5 - Math.random()).slice(0, 6);
+      const grid = document.getElementById('latest-reviews-grid');
+      if (grid) grid.innerHTML = latest.map(renderProductCard).join('');
+    })();
+  </script>
+</body>
+</html>

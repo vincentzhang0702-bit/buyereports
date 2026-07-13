@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Review - BuyeReports</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">B</span>
+        BuyeReports
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="category.html?cat=electronics">Electronics</a>
+        <a href="category.html?cat=appliances">Appliances</a>
+        <a href="category.html?cat=health">Health & Beauty</a>
+        <a href="compare.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search products...">
+        </div>
+        <a href="compare.html" class="nav-compare-btn">
+          ⚖️ Compare <span class="compare-count" style="display:none">0</span>
+        </a>
+        <button class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="category.html?cat=electronics">Electronics</a>
+    <a href="category.html?cat=appliances">Appliances</a>
+    <a href="category.html?cat=health">Health & Beauty</a>
+    <a href="compare.html">Compare</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="category.html" id="breadcrumb-cat-link">All Products</a>
+      <span class="sep">›</span>
+      <span id="breadcrumb-product">Product</span>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <div class="container product-detail" id="product-detail">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- Pros & Cons -->
+  <div class="container" id="pros-cons-section">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- Specs -->
+  <div class="container specs-section" id="specs-section">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- Review Content -->
+  <div class="container" id="review-content-section">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- Related Products -->
+  <div class="container related-section" id="related-section">
+    <!-- Filled by JS -->
+  </div>
+
+  <!-- Compare CTA -->
+  <section class="compare-cta">
+    <div class="container">
+      <h2>Compare Products Side by Side</h2>
+      <p>Not sure which one to pick? Add products to your comparison list and see how they stack up.</p>
+      <a href="compare.html" class="btn btn-white btn-lg">⚖️ Start Comparing</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>BuyeReports</h3>
+          <p>Helping consumers make smarter purchasing decisions with honest, in-depth product reviews and easy-to-use comparison tools.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <a href="category.html?cat=electronics">Electronics</a>
+          <a href="category.html?cat=appliances">Appliances</a>
+          <a href="category.html?cat=health">Health & Beauty</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="about.html#methodology">Our Methodology</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Affiliate Disclosure</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BuyeReports. All rights reserved. As an Amazon Associate we earn from qualifying purchases.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      const productId = getUrlParam('id');
+      let product;
+
+      // Find product
+      if (productId) {
+        product = PRODUCTS.find(p => p.id === productId);
+      }
+
+      // Fallback: show first product
+      if (!product) {
+        product = PRODUCTS[0];
+        window.history.replaceState({}, '', `product.html?id=${product.id}`);
+      }
+
+      // Update breadcrumb
+      document.getElementById('breadcrumb-cat-link').href = `category.html?cat=${product.category}`;
+      document.getElementById('breadcrumb-cat-link').textContent = product.categoryName;
+      document.getElementById('breadcrumb-product').textContent = product.name;
+      document.title = `${product.name} Review - BuyeReports`;
+
+      // Determine if in compare list
+      const inCompare = getCompareList().includes(product.id);
+      const compareBtnHTML = inCompare
+        ? `<button class="btn btn-outline" onclick="removeFromCompare('${product.id}'); this.textContent='⚖️ Add to Compare'; this.onclick=function(){addToCompare('${product.id}'); location.reload();}">✓ In Compare List</button>`
+        : `<button class="btn btn-outline" onclick="addToCompare('${product.id}'); this.textContent='✓ In Compare List'; this.onclick=function(){removeFromCompare('${product.id}'); location.reload();}">⚖️ Add to Compare</button>`;
+
+      // Render product detail
+      const detailHtml = `
+        <div class="product-detail-grid">
+          <div class="product-gallery ${product.category}">
+            <span style="font-size:8rem;">${product.image}</span>
+          </div>
+          <div class="product-info">
+            <span class="badge badge-blue">${product.subcategory}</span>
+            <h1>${product.name}</h1>
+            <div class="product-info-rating">
+              ${renderStars(product.rating, 'lg')}
+              <span class="rating-score">${product.rating}</span>
+              <span class="review-count">(${product.reviewCount.toLocaleString()} reviews)</span>
+            </div>
+            <div class="product-info-price">
+              <span class="currency">From </span>${product.price}
+            </div>
+            <p class="product-info-desc">${product.description}</p>
+            <div class="product-actions">
+              <a href="#" class="btn btn-primary btn-lg" onclick="showToast('This would link to the retailer 🔗', 'success'); return false;">🛒 Check Latest Price</a>
+              ${compareBtnHTML}
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('product-detail').innerHTML = detailHtml;
+
+      // Render pros & cons
+      const prosHtml = `
+        <div class="pros-cons">
+          <div class="pros">
+            <h3>✅ Pros</h3>
+            <ul>${product.pros.map(p => `<li>${p}</li>`).join('')}</ul>
+          </div>
+          <div class="cons">
+            <h3>❌ Cons</h3>
+            <ul>${product.cons.map(c => `<li>${c}</li>`).join('')}</ul>
+          </div>
+        </div>
+      `;
+      document.getElementById('pros-cons-section').innerHTML = prosHtml;
+
+      // Render specs
+      const specsHtml = `
+        <h2 style="margin-bottom:16px;">📋 Specifications</h2>
+        <table class="specs-table">
+          ${Object.entries(product.specs).map(([key, val]) => `
+            <tr><td>${key}</td><td>${val}</td></tr>
+          `).join('')}
+        </table>
+      `;
+      document.getElementById('specs-section').innerHTML = specsHtml;
+
+      // Render review content
+      const reviewHtml = `
+        <h2 style="margin-bottom:16px;">📝 Our Full Review</h2>
+        <div class="review-content">
+          ${product.review.split('\n\n').map(p => `<p>${p.trim()}</p>`).join('')}
+        </div>
+      `;
+      document.getElementById('review-content-section').innerHTML = reviewHtml;
+
+      // Render related products (same category, excluding current)
+      const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
+      const relatedHtml = `
+        <h2>🔗 Related Products</h2>
+        <div class="product-grid" style="margin-top:24px;">
+          ${related.map(renderProductCard).join('')}
+        </div>
+      `;
+      document.getElementById('related-section').innerHTML = relatedHtml;
+    })();
+  </script>
+</body>
+</html>
