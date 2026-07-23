@@ -1,0 +1,14 @@
+# BuyeReports — ads.txt
+# Last updated: July 14, 2026
+# This file declares authorized digital advertising sellers for buyereports.com
+
+# Google AdSense
+google.com, pub-XXXXXXXXXXXXXXXX, RESELLER, f08c47fec0942fa0
+
+# -------------------------------
+# IMPORTANT: Replace pub-XXXXXXXXXXXXXXXX above with your
+# actual Google AdSense publisher ID once your account is
+# approved. Find it at: Google AdSense → Account → Settings → Publisher ID
+#
+# Format: google.com, pub-<your-publisher-id>, RESELLER, f08c47fec0942fa0
+# -------------------------------
