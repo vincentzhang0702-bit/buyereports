@@ -1,194 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BuyeReports - Find the Best Products | Expert Reviews & Comparisons</title>
-  <meta name="description" content="Top products in every category so you can compare what truly matters and choose the best for you. Expert reviews for electronics, home appliances, and health & beauty.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="partnerboostverifycode" content="32dc01246faccb7f5b3cad5016dd5033">
+  <!-- Google AdSense verification — replace with your actual publisher ID when approved -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/buyerreports-avatar.png">
+  <link rel="apple-touch-icon" href="assets/buyerreports-avatar.png">
+  <title>BuyeReports | Compare Products With Confidence</title>
+  <meta name="description" content="Clear product comparisons, practical buying guides, and curated category rankings for U.S. shoppers.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">B</span>
-        BuyeReports
+<body class="media-home">
+  <nav class="home-nav">
+    <div class="home-shell">
+      <a aria-label='BuyeReports home' class='home-brand' href='/'>
+        <img src="assets/buyerreports-avatar.png" alt="BuyeReports logo" width="38" height="38">
+        <span><b>Buye</b><em>Reports</em></span>
       </a>
-      <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="category.html?cat=electronics">Electronics</a>
-        <a href="category.html?cat=appliances">Appliances</a>
-        <a href="category.html?cat=health">Health & Beauty</a>
-        <a href="compare.html">Compare</a>
-        <a href="about.html">About</a>
+      <div class="home-nav-links">
+        <a href="#popular">Popular</a>
+        <a href="#categories">Categories</a>
+        <a href='/methodology'>How We Rank</a>
+        <a href='/about'>About</a>
       </div>
-      <div class="nav-actions">
-        <div class="nav-search">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Search products...">
-        </div>
-        <a href="compare.html" class="nav-compare-btn">
-          ⚖️ Compare <span class="compare-count" style="display:none">0</span>
-        </a>
-        <button class="mobile-menu-btn">☰</button>
-      </div>
+      <div class="home-edition">🇺🇸 U.S. Edition</div>
+      <button class="home-menu" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="category.html?cat=electronics">Electronics</a>
-    <a href="category.html?cat=appliances">Appliances</a>
-    <a href="category.html?cat=health">Health & Beauty</a>
-    <a href="compare.html">Compare</a>
-    <a href="about.html">About</a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Find the Best Products</h1>
-      <p>Expert reviews and side-by-side comparisons to help you make confident buying decisions.</p>
-      <div class="hero-search">
-        <input type="text" placeholder="Search for headphones, laptops, vacuums...">
-        <button>🔍 Search Reviews</button>
-      </div>
-      <div class="hero-categories">
-        <a href="category.html?cat=electronics" class="hero-cat-chip">💻 Electronics</a>
-        <a href="category.html?cat=appliances" class="hero-cat-chip">🏠 Home Appliances</a>
-        <a href="category.html?cat=health" class="hero-cat-chip">💄 Health & Beauty</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section class="categories-section">
-    <div class="container">
-      <h2 class="section-title">Explore Categories</h2>
-      <p class="section-subtitle">Browse our in-depth reviews across every major product category</p>
-      <div class="cat-grid">
-        <a href="category.html?cat=electronics" class="cat-card">
-          <div class="cat-icon electronics">💻</div>
-          <h3>Consumer Electronics</h3>
-          <p>Headphones, laptops, smartphones, monitors, tablets — we test the latest tech so you don't have to.</p>
-          <span class="btn btn-outline">Browse Electronics →</span>
-        </a>
-        <a href="category.html?cat=appliances" class="cat-card">
-          <div class="cat-icon appliances">🏠</div>
-          <h3>Home Appliances</h3>
-          <p>Vacuum cleaners, coffee machines, air purifiers, dishwashers — find the best tools for your home.</p>
-          <span class="btn btn-outline">Browse Appliances →</span>
-        </a>
-        <a href="category.html?cat=health" class="cat-card">
-          <div class="cat-icon health">💄</div>
-          <h3>Health & Beauty</h3>
-          <p>Hair stylers, skincare devices, electric toothbrushes, massage guns — look and feel your best.</p>
-          <span class="btn btn-outline">Browse Health & Beauty →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Editor's Top Picks -->
-  <section class="featured-section">
-    <div class="container">
-      <h2 class="section-title">🏆 Editor's Top Picks</h2>
-      <p class="section-subtitle">Our highest-rated products, rigorously tested and reviewed</p>
-      <div class="scroll-row" id="top-picks-row">
-        <!-- Filled by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Reviews -->
-  <section class="latest-section">
-    <div class="container">
-      <h2 class="section-title">📝 Latest Reviews</h2>
-      <p class="section-subtitle">Fresh reviews, honest opinions — updated weekly</p>
-      <div class="product-grid" id="latest-reviews-grid">
-        <!-- Filled by JS -->
-      </div>
-      <div class="text-center mt-40">
-        <a href="category.html" class="btn btn-primary btn-lg">View All Reviews →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Compare CTA -->
-  <section class="compare-cta">
-    <div class="container">
-      <h2>Compare Products Side by Side</h2>
-      <p>Not sure which one to pick? Add products to your comparison list and see how they stack up.</p>
-      <a href="compare.html" class="btn btn-white btn-lg">⚖️ Start Comparing</a>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <div class="container">
-      <div class="newsletter-inner">
-        <div class="newsletter-text">
-          <h3>📬 Stay in the Know</h3>
-          <p>Get our latest reviews and buying guides delivered to your inbox.</p>
-        </div>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thanks for subscribing! 🎉', 'success'); this.reset();">
-          <input type="email" placeholder="Your email address" required>
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+  <main>
+    <header class="home-hero">
+      <div class="home-shell hero-inner">
+        <span class="home-kicker">INDEPENDENT BUYING GUIDANCE</span>
+        <h1>Make your next purchase<br>with more confidence.</h1>
+        <p>BuyeReports organizes product facts, market signals, availability, and shopper priorities into clear comparisons built for real decisions.</p>
+        <form class="home-search" action="#" onsubmit="return false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <input type="search" placeholder="What are you shopping for?" aria-label="Search buying guides">
+          <button type="submit">Search</button>
         </form>
+        <div class="home-trust-row">
+          <span>Clear ranking criteria</span>
+          <span>Transparent disclosures</span>
+          <span>U.S. market focus</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>BuyeReports</h3>
-          <p>Helping consumers make smarter purchasing decisions with honest, in-depth product reviews and easy-to-use comparison tools.</p>
+    <section class="home-section" id="popular">
+      <div class="home-shell">
+        <div class="home-heading">
+          <div><span class="home-kicker">POPULAR NOW</span><h2>Start with what shoppers are comparing.</h2></div>
+          <p>Focused guides that bring the most decision-relevant details into one place.</p>
         </div>
-        <div class="footer-col">
-          <h4>Categories</h4>
-          <a href="category.html?cat=electronics">Electronics</a>
-          <a href="category.html?cat=appliances">Appliances</a>
-          <a href="category.html?cat=health">Health & Beauty</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="about.html#methodology">Our Methodology</a>
-          <a href="#">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Affiliate Disclosure</a>
+        <div class="popular-grid">
+          <a class='popular-card featured' href='/vibration-plates'>
+            <div class="product-art">
+              <img src="assets/products/vibration-plate-hero.png" alt="Vibration plate for home fitness training" loading="eager" onerror="this.style.display='none';this.parentElement.classList.add('fallback-plate')">
+            </div>
+            <div class="popular-copy"><span>HOME FITNESS</span><h3>Vibration Plates</h3><p>Compare platform size, stability, controls, support, and overall value.</p><b>View the Top 10 <span>→</span></b></div>
+          </a>
+          <article class="popular-card">
+            <div class="product-art">
+              <img src="assets/products/air-purifier-hero.png" alt="Air purifier for home use" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('fallback-air')">
+            </div>
+            <div class="popular-copy"><span>HEALTHY HOME</span><h3>Air Purifiers</h3><p>Room coverage, filtration, noise, and ownership cost—organized clearly.</p><b>Guide in research</b></div>
+          </article>
+          <article class="popular-card">
+            <div class="product-art">
+              <img src="assets/products/robot-vacuum-hero.png" alt="Robot vacuum cleaner for automated home cleaning" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('fallback-clean')">
+            </div>
+            <div class="popular-copy"><span>SMART CLEANING</span><h3>Robot Vacuums</h3><p>Navigation, floor fit, maintenance, and practical home-use tradeoffs.</p><b>Guide in research</b></div>
+          </article>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 BuyeReports. All rights reserved. As an Amazon Associate we earn from qualifying purchases.</p>
+    </section>
+
+    <section class="home-section home-trending">
+      <div class="home-shell">
+        <div class="home-heading compact"><div><span class="home-kicker">TRENDING CATEGORIES</span><h2>Explore more buying decisions.</h2></div></div>
+        <div class="trend-grid">
+          <article>
+            <img class="trend-thumb" src="assets/products/walking-pad-thumb.png" alt="Walking pad treadmill" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Home Fitness</small><h3>Walking Pads</h3></div><b>→</b></article>
+          <article>
+            <img class="trend-thumb" src="assets/products/ice-maker-thumb.png" alt="Countertop ice maker" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Home & Kitchen</small><h3>Countertop Ice Makers</h3></div><b>→</b></article>
+          <article>
+            <img class="trend-thumb" src="assets/products/electric-toothbrush-thumb.png" alt="Electric toothbrush" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Personal Care</small><h3>Electric Toothbrushes</h3></div><b>→</b></article>
+          <article>
+            <img class="trend-thumb" src="assets/products/portable-projector-thumb.png" alt="Portable projector" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Electronics</small><h3>Portable Projectors</h3></div><b>→</b></article>
+          <article>
+            <img class="trend-thumb" src="assets/products/spin-scrubber-thumb.png" alt="Electric spin scrubber" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Home Improvement</small><h3>Electric Spin Scrubbers</h3></div><b>→</b></article>
+          <article>
+            <img class="trend-thumb" src="assets/products/pool-cleaner-thumb.png" alt="Pool cleaner" loading="lazy" onerror="this.style.display='none'">
+            <div><small>Outdoor Living</small><h3>Pool Cleaners</h3></div><b>→</b></article>
+        </div>
       </div>
+    </section>
+
+    <section class="home-categories" id="categories">
+      <div class="home-shell category-layout">
+        <div class="category-intro"><span class="home-kicker">BROWSE BY CATEGORY</span><h2>A growing library of practical product research.</h2><p>Each category is organized around the questions shoppers actually need answered before they buy.</p></div>
+        <div class="category-links">
+          <a href="#">Appliances <span>01</span></a><a href="#">Beauty & Personal Care <span>02</span></a>
+          <a href="#">Electronics <span>03</span></a><a href="#">Health & Fitness <span>04</span></a>
+          <a href="#">Home & Kitchen <span>05</span></a><a href="#">Home Improvement <span>06</span></a>
+          <a href="#">Lawn & Garden <span>07</span></a><a href="#">Office <span>08</span></a>
+          <a href="#">Pets <span>09</span></a><a href="#">Sports & Outdoors <span>10</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-standard">
+      <div class="home-shell standard-grid">
+        <div><span class="home-kicker">THE BUYEREPORTS STANDARD</span><h2>Useful comparisons without shopping noise.</h2></div>
+        <div class="standard-points">
+          <article><b>01</b><h3>Decision-first research</h3><p>We structure product information around real use cases and meaningful tradeoffs.</p></article>
+          <article><b>02</b><h3>Commercial transparency</h3><p>Affiliate relationships are disclosed and do not create factual product claims.</p></article>
+          <article><b>03</b><h3>Current market context</h3><p>Pricing and availability can change, so readers are directed to verify live offers.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-shell footer-main">
+      <div class="footer-identity">
+        <a class='home-brand light' href='/'><img src="assets/buyerreports-avatar.png" alt="BuyeReports logo" width="38" height="38"><span><b>Buye</b><em>Reports</em></span></a>
+        <p>BuyeReports is a U.S.-focused consumer media platform for clear product comparisons, structured Top 10 rankings, and practical buying guidance across everyday categories.</p>
+        <span class="footer-edition">Independent guidance for U.S. shoppers</span>
+      </div>
+      <div><h4>Research</h4><a href="#popular">Popular Guides</a><a href="#categories">All Categories</a><a href='/methodology'>How We Rank</a><a href='/guides'>Buying Guides</a></div>
+      <div><h4>BuyeReports</h4><a href='/about'>About Us</a><a href='/contact'>Contact & Corrections</a><a href='/methodology'>Editorial Standards</a></div>
+      <div><h4>Policies</h4><a href='/disclosure'>Advertising Disclosure</a><a href='/privacy'>Privacy Policy</a><a href='/privacy'>Privacy Choices</a></div>
+    </div>
+    <div class="home-shell footer-disclosure">
+      <b>Advertising disclosure</b>
+      <p>BuyeReports may earn compensation when readers click certain links or complete qualifying purchases. Commercial relationships do not create factual product claims or automatically determine editorial rankings. <a href='/disclosure'>Read our full disclosure.</a></p>
+    </div>
+    <div class="home-shell footer-legal">
+      <span>© 2026 BuyeReports. All rights reserved.</span>
+      <span>Product information, pricing, and availability may change. Verify current details with the retailer before purchasing.</span>
     </div>
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    // Populate Top Picks (rating >= 4.6)
-    (function() {
-      const topPicks = PRODUCTS.filter(p => p.rating >= 4.7);
-      const row = document.getElementById('top-picks-row');
-      if (row) row.innerHTML = topPicks.map(renderProductCard).join('');
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-banner-inner">
+      <div class="cookie-text">
+        <strong>🍪 Cookie Notice</strong>
+        <p>We use cookies and similar technologies for essential site functions, analytics, and to serve personalized advertisements through Google AdSense. By clicking "Accept All," you consent to our use of all cookies. Choose "Settings" to customize your preferences. <a href="/privacy">Learn more</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-settings-btn" class="cookie-btn secondary">Settings</button>
+        <button id="cookie-accept-btn" class="cookie-btn primary">Accept All</button>
+      </div>
+    </div>
+  </div>
 
-      // Populate Latest Reviews (random 6)
-      const latest = [...PRODUCTS].sort(() => 0.5 - Math.random()).slice(0, 6);
-      const grid = document.getElementById('latest-reviews-grid');
-      if (grid) grid.innerHTML = latest.map(renderProductCard).join('');
-    })();
+  <!-- Cookie Settings Panel -->
+  <div id="cookie-panel" class="cookie-panel hidden" role="dialog" aria-label="Cookie settings">
+    <div class="cookie-panel-inner">
+      <h3>Cookie Preferences</h3>
+      <p>Manage your cookie preferences below. Essential cookies cannot be disabled as they are required for the Site to function.</p>
+      <div class="cookie-option">
+        <div><strong>Essential</strong><p>Required for core site functionality and security. Always enabled.</p></div>
+        <label class="toggle disabled"><input type="checkbox" checked disabled><span></span></label>
+      </div>
+      <div class="cookie-option">
+        <div><strong>Analytics</strong><p>Help us understand how visitors use the site so we can improve it (Google Analytics).</p></div>
+        <label class="toggle"><input type="checkbox" id="cookie-analytics" checked><span></span></label>
+      </div>
+      <div class="cookie-option">
+        <div><strong>Advertising</strong><p>Used by Google AdSense to show relevant ads and measure campaign performance.</p></div>
+        <label class="toggle"><input type="checkbox" id="cookie-ads" checked><span></span></label>
+      </div>
+      <div class="cookie-panel-actions">
+        <button id="cookie-save-btn" class="cookie-btn primary">Save Preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* Cookie Consent — embedded for reliability */
+  (function() {
+    var banner = document.getElementById('cookie-consent');
+    var panel = document.getElementById('cookie-panel');
+    if (!banner || !panel) return;
+    if (localStorage.getItem('cookie_prefs')) { banner.remove(); return; }
+
+    function savePrefs(analytics, ads) {
+      localStorage.setItem('cookie_prefs', JSON.stringify({ analytics: analytics, ads: ads, timestamp: Date.now() }));
+      banner.remove(); panel.classList.add('hidden');
+    }
+
+    document.getElementById('cookie-accept-btn').addEventListener('click', function() {
+      savePrefs(true, true);
+    });
+
+    document.getElementById('cookie-settings-btn').addEventListener('click', function() {
+      banner.classList.add('hidden'); panel.classList.remove('hidden');
+    });
+
+    document.getElementById('cookie-save-btn').addEventListener('click', function() {
+      savePrefs(
+        document.getElementById('cookie-analytics').checked,
+        document.getElementById('cookie-ads').checked
+      );
+    });
+  })();
   </script>
 </body>
 </html>
