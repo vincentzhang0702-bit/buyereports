@@ -3,3 +3,5 @@
 
 [build.environment]
   NODE_VERSION = "none"
+
+# static site - no build required
