@@ -176,5 +176,21 @@
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+
+  <div id="cookie-consent" class="cookie-banner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-banner-inner">
+      <div class="cookie-text"><strong>Cookie Notice</strong><p>We use cookies for essential functions, analytics, and advertising. <a href="/privacy">Learn more</a>.</p></div>
+      <div class="cookie-actions"><button id="cookie-settings-btn" class="cookie-btn secondary">Settings</button><button id="cookie-accept-btn" class="cookie-btn primary">Accept All</button></div>
+    </div>
+  </div>
+  <script>
+  (function() {
+    var banner = document.getElementById("cookie-consent");if(!banner)return;
+    if(localStorage.getItem("cookie_prefs")){banner.remove();return;}
+    function save(a,d){localStorage.setItem("cookie_prefs",JSON.stringify({analytics:a,ads:d,timestamp:Date.now()}));banner.remove();}
+    document.getElementById("cookie-accept-btn").addEventListener("click",function(){save(true,true)});
+    document.getElementById("cookie-settings-btn").addEventListener("click",function(){location.href="/privacy"});
+  })();
+  </script>
 </body>
 </html>
