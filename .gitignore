@@ -6,3 +6,5 @@ create_ppt.*
 build_pptx.*
 gen_ppt.*
 tasks/
+
+# Trigger deploy
