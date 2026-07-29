@@ -2,4 +2,5 @@
 # Last updated: July 24, 2026
 # Authorized digital advertising sellers for buyereports.com
 
-google.com, pub-8706152535571023, RESELLER, f08c47fec0942fa0
+google.com, pub-7806486679650655, RESELLER, f08c47fec0942fa0
+
