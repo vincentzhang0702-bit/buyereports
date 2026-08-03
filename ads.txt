@@ -1,6 +1,6 @@
-# BuyeReports — ads.txt
+# PicksGuide — ads.txt
 # Last updated: July 24, 2026
-# Authorized digital advertising sellers for buyereports.com
+# Authorized digital advertising sellers for picksguide.org
 
 google.com, pub-7806486679650655, RESELLER, f08c47fec0942fa0
 
